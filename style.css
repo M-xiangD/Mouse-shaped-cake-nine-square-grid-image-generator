@@ -1,0 +1,472 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+/* 左侧控制区域 */
+.control-panel {
+    flex: 1;
+    max-width: 300px;
+    background-color: #f9f9f9;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px;
+}
+
+/* 右侧内容区域 */
+.content-panel {
+    flex: 3;
+    padding: 30px;
+}
+
+.header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: #2c3e50;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* 模式选择 */
+.mode-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mode-btn {
+    padding: 10px 20px;
+    border: 2px solid #3498db;
+    background-color: #fff;
+    color: #3498db;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.mode-btn:hover {
+    background-color: #f0f8ff;
+}
+
+.mode-btn.active {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* 网格布局控制 */
+.grid-layout-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 通用区域样式 */
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+}
+
+/* 上传区域 */
+.single-upload {
+    text-align: center;
+}
+
+.multiple-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 2px solid #3498db;
+    background-color: #fff;
+    color: #3498db;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-btn:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.upload-btn input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-preview {
+    max-width: 120px;
+    max-height: 120px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s ease;
+}
+
+.upload-container {
+    position: relative;
+    text-align: center;
+    margin: 8px;
+}
+
+.remove-btn {
+    display: block;
+    margin: 6px auto;
+    padding: 4px 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    width: 70px;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+.upload-previews {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+/* 预览区域 */
+.preview-section {
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 16px;
+    aspect-ratio: 1;
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s ease;
+}
+
+.grid-item {
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.grid-item:hover {
+    border-color: #3498db;
+}
+
+.grid-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.grid-item.selected {
+    border: 2px solid #3498db;
+    background-color: #f0f8ff;
+}
+
+/* 间距控制 */
+.spacing-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.control-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.control-group input[type="number"] {
+    padding: 6px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.control-group .range-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-group input[type="range"] {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: #e0e0e0;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.control-group .value-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    color: #777;
+    min-width: 40px;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+}
+
+.control-group input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+    border: none;
+}
+
+.control-group span {
+    font-size: 14px;
+    color: #777;
+    text-align: right;
+}
+
+/* 操作按钮 */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.action-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.generate-btn {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+.generate-btn:hover {
+    background-color: #229954;
+}
+
+.download-btn {
+    background-color: #e67e22;
+    color: #fff;
+}
+
+.download-btn:hover {
+    background-color: #d35400;
+}
+
+.shuffle-btn {
+    background-color: #9b59b6;
+    color: #fff;
+}
+
+.shuffle-btn:hover {
+    background-color: #8e44ad;
+}
+
+/* 隐藏的Canvas */
+.canvas-container {
+    display: none;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .control-panel {
+        max-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .mode-selector {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .mode-btn {
+        width: calc(50% - 5px);
+        text-align: center;
+    }
+    
+    .grid-layout-controls {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .grid-layout-controls .control-group {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        border-radius: 8px;
+    }
+    
+    .control-panel {
+        padding: 16px;
+    }
+    
+    .content-panel {
+        padding: 20px;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    h2 {
+        font-size: 16px;
+    }
+    
+    .section {
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .grid-container {
+        max-width: 300px;
+        padding: 8px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .action-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .upload-previews {
+        gap: 8px;
+    }
+    
+    .upload-preview {
+        max-width: 80px;
+        max-height: 80px;
+    }
+}
